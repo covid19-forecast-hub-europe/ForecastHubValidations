@@ -35,7 +35,8 @@ validate_model <- function(
       data_files <- fs::dir_ls(
         path = file.path(data_folder, model_name),
         regexp = "\\.csv$",
-        type = "file"
+        type = "file",
+        recurse = 1
       )
 
       metadata_file <- fs::dir_ls(
