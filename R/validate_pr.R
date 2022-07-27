@@ -96,8 +96,8 @@ validate_pr <- function(
 
     validations <- c(validations, fhub_check(
       gh_repo,
-      all(startsWith(pr_files, data_folder)),
-      paste("Only content of", data_folder), "changed"
+      all(startsWith(pr_files, data_folder) | startsWtih(pr_file, metadata_folder)),
+      paste("Only content of", data_folder "or", metadata_folder), "changed"
     ))
   },
   error = function(e) {
