@@ -42,20 +42,6 @@ validate_model_data <- function(data_file, data_schema) {
         show_col_types = FALSE
       )
 
-      validations <- c(validations, fhub_check(
-        data_file,
-        identical(
-          unique(data$origin_date),
-          as.Date(
-            gsub(
-              "^(\\d{4}-\\d{2}-\\d{2})",
-              "\\1", fs::path_file(data_file)
-            )
-          )
-        ),
-        "`origin_date` column", "identical to the date in filename"
-      ))
-
       data_json <- toJSON(data, dataframe = "columns", na = "null")
 
       if (!file.exists(data_schema)) {
