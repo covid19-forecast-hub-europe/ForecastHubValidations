@@ -7,10 +7,11 @@ fs::dir_copy(
   tdir
 )
 withr::with_dir(tdir, {
-  fs::file_move("testdata/data-processed/example-model/2021-07-19-example-model.csv",
-                "testdata/data-processed/example-model/2021-07-18-example-model.csv")
   fs::file_move("testdata/model-metadata/example-model2.yml",
                 "testdata/model-metadata/example-model-fail.yml")
+  df <- read.csv("testdata/data-processed/example-model/2021-07-19-example-model.csv")
+  df$location[1] <- "XXX"
+  write.csv(df, "testdata/data-processed/example-model/2021-07-19-example-model.csv", row.names = FALSE)
 })
 
 tdir2 <- fs::path(tempdir(), "error_fh_validations")
