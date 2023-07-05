@@ -91,18 +91,30 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/epiforecasts/HubValidations" class="external-link">HubValidations</a></span><span class="op">)</span></span></code></pre></div>
-<p>HubValidations is an R package designed to validate submissions to a forecast hub.</p>
-<p>Most of the time, validations will be set up to run automatically via <a href="https://github.com/features/actions" class="external-link">GitHub Actions</a> when a pull request is opened in a hub GitHub repository.</p>
-<p>However, you might want to validate your submission locally, either to check that everything is okay in advance, or to investigate the reason of a failure in the automated checks.</p>
+<p>HubValidations is an R package designed to validate submissions to a
+forecast hub.</p>
+<p>Most of the time, validations will be set up to run automatically via
+<a href="https://github.com/features/actions" class="external-link">GitHub Actions</a> when a
+pull request is opened in a hub GitHub repository.</p>
+<p>However, you might want to validate your submission locally, either
+to check that everything is okay in advance, or to investigate the
+reason of a failure in the automated checks.</p>
 <div class="section level2">
 <h2 id="interpreting-the-output-of-hubvalidations">Interpreting the output of HubValidations<a class="anchor" aria-label="anchor" href="#interpreting-the-output-of-hubvalidations"></a>
 </h2>
-<p>By default, validation functions from HubValidations (functions starting with <code>validate_...()</code>) will print all the checks performed and passing checks will be shown on lines starting with <code>✓</code> while failing check lines will start with <code>x</code>.</p>
+<p>By default, validation functions from HubValidations (functions
+starting with <code>validate_...()</code>) will print all the checks
+performed and passing checks will be shown on lines starting with
+<code>✓</code> while failing check lines will start with
+<code>x</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="checking-all-your-changes">Checking all your changes<a class="anchor" aria-label="anchor" href="#checking-all-your-changes"></a>
 </h2>
-<p>To reproduce the checks done automatically when you open a pull request, the simplest option is to place yourself at the root of the hub GitHub repository, and call <code><a href="../reference/validate_repository.html">validate_repository()</a></code> or <code><a href="../reference/validate_pr.html">validate_pr()</a></code>.</p>
+<p>To reproduce the checks done automatically when you open a pull
+request, the simplest option is to place yourself at the root of the hub
+GitHub repository, and call <code><a href="../reference/validate_repository.html">validate_repository()</a></code> or
+<code><a href="../reference/validate_pr.html">validate_pr()</a></code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/validate_repository.html">validate_repository</a></span><span class="op">(</span></span>
 <span>  data_folder <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testdata"</span>, <span class="st">"data-processed"</span>, package <span class="op">=</span> <span class="st">"HubValidations"</span><span class="op">)</span>,</span>
@@ -163,7 +175,12 @@
 <div class="section level2">
 <h2 id="checking-only-your-model">Checking only your model<a class="anchor" aria-label="anchor" href="#checking-only-your-model"></a>
 </h2>
-<p>You can check a specific model instead of checking the whole repository by running <code><a href="../reference/validate_model.html">validate_model()</a></code>. In this case, you will also need to specify the path to the schema files used for the validation. Usually, these files will be at the root of the folder containing each team folder. In the case of the European Covid-19 Forecast Hub, this folder is named <code>data-processed</code>.</p>
+<p>You can check a specific model instead of checking the whole
+repository by running <code><a href="../reference/validate_model.html">validate_model()</a></code>. In this case, you
+will also need to specify the path to the schema files used for the
+validation. Usually, these files will be at the root of the folder
+containing each team folder. In the case of the European Covid-19
+Forecast Hub, this folder is named <code>data-processed</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/validate_model.html">validate_model</a></span><span class="op">(</span></span>
 <span>  <span class="st">"example-model"</span>,</span>
@@ -200,7 +217,9 @@
 <div class="section level2">
 <h2 id="checking-only-your-metadata-file">Checking only your metadata file<a class="anchor" aria-label="anchor" href="#checking-only-your-metadata-file"></a>
 </h2>
-<p>Alternatively, you can check only the metadata file with <code><a href="../reference/validate_model_metadata.html">validate_model_metadata()</a></code>. You will have to specify the path to the metadata schema file</p>
+<p>Alternatively, you can check only the metadata file with
+<code><a href="../reference/validate_model_metadata.html">validate_model_metadata()</a></code>. You will have to specify the
+path to the metadata schema file</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/validate_model_metadata.html">validate_model_metadata</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testdata"</span>, <span class="st">"model-metadata"</span>, <span class="st">"example-model.yml"</span>, package <span class="op">=</span> <span class="st">"HubValidations"</span><span class="op">)</span>,</span>
@@ -216,7 +235,9 @@
 <div class="section level2">
 <h2 id="checking-only-your-projection-file">Checking only your projection file<a class="anchor" aria-label="anchor" href="#checking-only-your-projection-file"></a>
 </h2>
-<p>Alternatively, you can check only the projection file with <code><a href="../reference/validate_model_data.html">validate_model_data()</a></code>. You will have to specify the path to the metadata schema file</p>
+<p>Alternatively, you can check only the projection file with
+<code><a href="../reference/validate_model_data.html">validate_model_data()</a></code>. You will have to specify the path to
+the metadata schema file</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/validate_model_data.html">validate_model_data</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testdata"</span>, <span class="st">"data-processed"</span>, <span class="st">"example-model"</span>, <span class="st">"2021-07-26-example-model.csv"</span>, package <span class="op">=</span> <span class="st">"HubValidations"</span><span class="op">)</span>,</span>
@@ -248,7 +269,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
