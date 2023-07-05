@@ -23,7 +23,7 @@ You can the latest version of this package from GitHub with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("epiforecasts/HubValidations")
+remotes::install_github("covid19-forecast-hub-europe/HubValidations")
 ```
 
 ## Usage
