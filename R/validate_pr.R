@@ -35,7 +35,7 @@ validate_pr <- function(
 
   tryCatch({
 
-    if (local || nchar(pr_number) == 0L) {
+    if (local) {
       validations <- c(
         validations,
         validate_repository(data_folder, metadata_folder, ...)
