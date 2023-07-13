@@ -85,10 +85,14 @@ validate_model <- function(
     }
   )
 
-  validations_metadata <- validate_model_metadata(
-    metadata_file,
-    metadata_schema
-  )
+  if (length(metadata_file) == 1) {
+    validations_metadata <- validate_model_metadata(
+      metadata_file,
+      metadata_schema
+    )
+  } else {
+    validations_metadata <- NULL
+  }
 
   validations_data <- lapply(
     data_files,
