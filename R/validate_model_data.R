@@ -34,7 +34,7 @@ validate_model_data <- function(data_file, data_schema) {
           "^\\d{4}\\-\\d{2}\\-\\d{2}-[a-zA-Z0-9_]+-[a-zA-Z0-9_]+(-[A-Z]{2})?(-[[:alpha:]]+)?\\.csv(\\.gz)?$",
           fs::path_file(data_file)
         ),
-        "Filename", "formed of a date, a model name, and optionally a target separated by an hyphen"
+        "Filename", "formed of a date, a model name, and optionally a country and/or target separated by an hyphen"
       ))
 
       data <- readr::read_csv(
