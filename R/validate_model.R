@@ -61,7 +61,8 @@ validate_model <- function(
              identical(
                model_name,
                gsub(
-                 "^\\d{4}\\-\\d{2}\\-\\d{2}-([a-zA-Z0-9_]+-[a-zA-Z0-9_]+)(-[A-Z]{2})?(-[[:alpha:]]+)?\\.csv(\\.gz)?$", "\\1", # nolint
+                 "^\\d{4}\\-\\d{2}\\-\\d{2}-([a-zA-Z0-9_]+-[a-zA-Z0-9_]+).*$",
+                 "\\1",
                  fs::path_file(file)
                )
              ),
