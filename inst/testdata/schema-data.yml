@@ -6,7 +6,7 @@ description: >
   for more info.
 type: object
 properties:
-  origin_date:
+  forecast_date:
     description: The date at which the forecasts were established and submitted
     type: array
     items:
@@ -55,7 +55,7 @@ properties:
       type: integer
       minimum: 0
 required:
-  - origin_date
+  - forecast_date
   - target
   - target_end_date
   - location
