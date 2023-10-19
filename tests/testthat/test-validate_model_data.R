@@ -38,7 +38,7 @@ test_that("Failed validation", {
   withr::with_dir(tdir, {
     res <- expect_silent({
       validate_model_data(
-        fs::path("testdata", "data-processed", "example-model", "2021-07-19-example-model.csv"),
+        fs::path("testdata", "data-processed", "example-model", "2021-07-18-example-model.csv"),
         fs::path("testdata", "schema-data.yml")
       )
     })
@@ -78,6 +78,6 @@ test_that("Number of validations", {
                 package = "HubValidations")
   )
 
-  expect_length(res, 2L)
+  expect_length(res, 3L)
 
 })
