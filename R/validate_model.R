@@ -60,7 +60,7 @@ validate_model <- function(
              fs::path_file(file),
              identical(
                model_name,
-               gsub("^\\d{4}\\-\\d{2}\\-\\d{2}-([a-zA-Z0-9_]+-[a-zA-Z0-9_]+)(-[[:alpha:]]+)?\\.csv(\\.gz)?$", "\\1",
+               gsub("^\\d{4}\\-\\d{2}\\-\\d{2}-([a-zA-Z0-9_]+-[a-zA-Z0-9_]+)(-[[:alpha:]]+)?\\.csv$", "\\1",
                     fs::path_file(file))
              ),
              "Folder name", "identical to model name in data file"
