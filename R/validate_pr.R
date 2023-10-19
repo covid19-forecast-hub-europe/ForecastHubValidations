@@ -5,7 +5,6 @@
 #' @param local Logical. Is this function called from your local computer or
 #' from a continuous integration system. By default, it tries to guess the
 #' answer based on the values of some environment variables
-#' @param abstract_folder The path to the folder containing metadata
 #' @param ... Arguments passed to [validate_repository()]
 #' @inheritParams validate_repository
 #'
@@ -27,7 +26,6 @@ validate_pr <- function(
   pr_number,
   data_folder,
   metadata_folder,
-  abstract_folder,
   local = identical(Sys.getenv("GITHUB_ACTIONS"), "true") &&
           identical(Sys.getenv("GITHUB_REPOSITORY"), gh_repo),
   ...
@@ -98,8 +96,8 @@ validate_pr <- function(
 
     validations <- c(validations, fhub_check(
       gh_repo,
-      all(startsWith(pr_files, data_folder) | startsWith(pr_files, metadata_folder) | startsWith(pr_files, abstract_folder)),
-      paste0("Only content of ", data_folder, ", ", abstract_folder, " or ", metadata_folder), "changed"
+      all(startsWith(pr_files, data_folder) | startsWith(pr_files, metadata_folder)),
+      paste("Only content of", data_folder, "or", metadata_folder), "changed"
     ))
   },
   error = function(e) {
